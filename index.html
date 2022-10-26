@@ -57,23 +57,31 @@
                     </div>
                 </div>
             </div>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingTwo">
-                <div class="accordion-body" style="padding: 0;max-height: 400px; overflow-x: scroll;">
-                    <textarea class="form-control" rows="30">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTwo">
+                        Script
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body" style="padding: 0;max-height: 400px; overflow-x: scroll;">
+                        <textarea  class="form-control" rows="30">
                             function simulate(element, eventName)
                             {
                                 var options = extend(defaultOptions, arguments[2] || {});
                                 var oEvent, eventType = null;
-
+            
                                 for (var name in eventMatchers)
                                 {
                                     if (eventMatchers[name].test(eventName)) { eventType = name; break; }
                                 }
-
+            
                                 if (!eventType)
                                     throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
-
+            
                                 if (document.createEvent)
                                 {
                                     oEvent = document.createEvent(eventType);
@@ -99,13 +107,13 @@
                                 }
                                 return element;
                             }
-
+            
                             function extend(destination, source) {
                                 for (var property in source)
                                 destination[property] = source[property];
                                 return destination;
                             }
-
+            
                             var eventMatchers = {
                                 'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
                                 'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
@@ -121,17 +129,17 @@
                                 bubbles: true,
                                 cancelable: true
                             }
-
+            
                             addEventListener('keypress', (event) => {
                                 if (event.key == "p") {
-
+            
                                     const allPos = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"]
-
+            
                                     const positions = window.prompt("Digite aqui os números que deseja apostar?");
                                     const splitedPositions = positions.split(", ");    
-
+            
                                     allPos.forEach(pos => {
-
+            
                                         if (splitedPositions.includes(pos)) {
                                             document.querySelector(`[data-bet-spot-id="${pos}"]`).style.fill = "green";
                                             simulate(document.querySelector(`[data-bet-spot-id="${pos}"]`), "click")
@@ -139,12 +147,13 @@
                                             document.querySelector(`[data-bet-spot-id="${pos}"]`).style.fill = "";
                                         }
                                     });
-
+            
                                 }
                             });
                         </textarea>
+                    </div>
                 </div>
-            </div>
+            </div>        
         </div>
     </section>
     <section id="users-container" class="row mt-3">
