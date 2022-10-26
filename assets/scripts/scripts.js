@@ -37,7 +37,7 @@
                                 Saldo: <span class="current_cash">${formatPrice(user.balance)}</span> <br />
                                 Score: ${user.score}
                                 ${user.history.length > 0 ? `<br /> Lucro gerado: ${formatPrice(user.history.reduce((a, b) => a + b) - (user.history.length * 300))}` : ''}
-                                ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações (Geração ${user.history.length - data.info.generation})` : '<br />Criado nesta geração'}
+                                ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações (Geração ${data.info.generation - user.history.length})` : '<br />Criado nesta geração'}
                                 ${user.trophies ? `<br /> Troféus: ${user.trophies}` : ''}
                             </p>
                             <div class="col-auto">
