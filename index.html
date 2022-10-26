@@ -35,7 +35,8 @@
 
     <section id="roulette-container">
         <a href="#" id="bestBtn" class="btn btn-warning mb-3 w-100">bestIA da geração</a>
-        <a href="https://br.betano.com/casino/live/games/speed-auto-roulette/1538/tables/" class="btn btn-danger mb-3 w-100">Ir até a roleta</a>
+        <a href="https://br.betano.com/casino/live/games/speed-auto-roulette/1538/tables/"
+            class="btn btn-danger mb-3 w-100">Ir até a roleta</a>
 
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item">
@@ -54,6 +55,94 @@
                             <tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body" style="padding: 0;max-height: 400px; overflow-x: scroll;">
+                    <textarea class="form-control" rows="30">
+                            function simulate(element, eventName)
+                            {
+                                var options = extend(defaultOptions, arguments[2] || {});
+                                var oEvent, eventType = null;
+
+                                for (var name in eventMatchers)
+                                {
+                                    if (eventMatchers[name].test(eventName)) { eventType = name; break; }
+                                }
+
+                                if (!eventType)
+                                    throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
+
+                                if (document.createEvent)
+                                {
+                                    oEvent = document.createEvent(eventType);
+                                    if (eventType == 'HTMLEvents')
+                                    {
+                                        oEvent.initEvent(eventName, options.bubbles, options.cancelable);
+                                    }
+                                    else
+                                    {
+                                        oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
+                                        options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
+                                        options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
+                                    }
+                                    element.dispatchEvent(oEvent);
+                                }
+                                else
+                                {
+                                    options.clientX = options.pointerX;
+                                    options.clientY = options.pointerY;
+                                    var evt = document.createEventObject();
+                                    oEvent = extend(evt, options);
+                                    element.fireEvent('on' + eventName, oEvent);
+                                }
+                                return element;
+                            }
+
+                            function extend(destination, source) {
+                                for (var property in source)
+                                destination[property] = source[property];
+                                return destination;
+                            }
+
+                            var eventMatchers = {
+                                'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
+                                'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
+                            }
+                            var defaultOptions = {
+                                pointerX: 0,
+                                pointerY: 0,
+                                button: 0,
+                                ctrlKey: false,
+                                altKey: false,
+                                shiftKey: false,
+                                metaKey: false,
+                                bubbles: true,
+                                cancelable: true
+                            }
+
+                            addEventListener('keypress', (event) => {
+                                if (event.key == "p") {
+
+                                    const allPos = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"]
+
+                                    const positions = window.prompt("Digite aqui os números que deseja apostar?");
+                                    const splitedPositions = positions.split(", ");    
+
+                                    allPos.forEach(pos => {
+
+                                        if (splitedPositions.includes(pos)) {
+                                            document.querySelector(`[data-bet-spot-id="${pos}"]`).style.fill = "green";
+                                            simulate(document.querySelector(`[data-bet-spot-id="${pos}"]`), "click")
+                                        } else {
+                                            document.querySelector(`[data-bet-spot-id="${pos}"]`).style.fill = "";
+                                        }
+                                    });
+
+                                }
+                            });
+                        </textarea>
                 </div>
             </div>
         </div>
