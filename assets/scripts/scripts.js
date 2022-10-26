@@ -25,26 +25,28 @@
 
         data.users.forEach((user) => {
             html += `
-            <div class="card mb-3" style="max-width: 540px;" data-id="${user._id}" id="${user._id}">
-                <div class="row g-0">
-                    <div class="col-md-4" style="margin: 5px;">
-                        <img src="${user.avatar}" class="img-fluid rounded-start" alt="Avtar de ${user.name}">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">${user.name}</h5>
-                            <p class="card-text">
-                                Saldo: <span class="current_cash">${formatPrice(user.balance)}</span> <br />
-                                Score: ${user.score}
-                                ${user.history.length > 0 ? `<br /> Lucro gerado: ${formatPrice(user.history.reduce((a, b) => a + b) - (user.history.length * 300))}` : ''}
-                                ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações (Geração ${data.info.generation - user.history.length})` : '<br />Criado nesta geração'}
-                                ${user.trophies ? `<br /> Troféus: ${user.trophies}` : ''}
-                            </p>
-                            <div class="col-auto">
-                                <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
-                                <div class="input-group">
-                                <div class="input-group-text">🎰</div>
-                                <input type="text" class="form-control bet_user " placeholder="Aposta" readonly>
+            <div class="col-lg-4">
+                <div class="card mb-3" style="max-width: 540px;" data-id="${user._id}" id="${user._id}">
+                    <div class="row g-0">
+                        <div class="col-md-4" style="margin: 5px;">
+                            <img src="${user.avatar}" class="img-fluid rounded-start" alt="Avtar de ${user.name}">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">${user.name}</h5>
+                                <p class="card-text">
+                                    Saldo: <span class="current_cash">${formatPrice(user.balance)}</span> <br />
+                                    Score: ${user.score}
+                                    ${user.history.length > 0 ? `<br /> Lucro gerado: ${formatPrice(user.history.reduce((a, b) => a + b) - (user.history.length * 300))}` : ''}
+                                    ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações (Geração ${data.info.generation - user.history.length})` : '<br />Criado nesta geração'}
+                                    ${user.trophies ? `<br /> Troféus: ${user.trophies}` : ''}
+                                </p>
+                                <div class="col-auto">
+                                    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                                    <div class="input-group">
+                                    <div class="input-group-text">🎰</div>
+                                    <input type="text" class="form-control bet_user " placeholder="Aposta" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -116,26 +118,28 @@
         let html = '';
         data.users.forEach((user) => {
             html += `
-            <div class="card mb-3" style="max-width: 540px;" data-id="${user._id}" id="${user._id}">
-                <div class="row g-0">
-                    <div class="col-md-4" style="margin: 5px;">
-                        <img src="${user.avatar}" class="img-fluid rounded-start" alt="Avtar de ${user.name}">
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">${user.name}</h5>
-                            <p class="card-text">
-                                Saldo: <span class="current_cash">${formatPrice(user.balance)}</span> <br />
-                                Score: ${user.score}
-                                ${user.history.length > 0 ? `<br /> Lucro gerado: ${formatPrice(user.history.reduce((a, b) => a + b) - (user.history.length * 300))}` : ''}
-                                ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações` : '<br />Criado nesta geração'}
-                                ${user.trophies ? `<br /> Troféus: ${user.trophies}` : ''}
-                            </p>
-                            <div class="col-auto">
-                                <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
-                                <div class="input-group">
-                                <div class="input-group-text">🎰</div>
-                                <input type="text" class="form-control bet_user " placeholder="Aposta" readonly>
+            <div class="col-lg-4">
+                <div class="card mb-3" style="max-width: 540px;" data-id="${user._id}" id="${user._id}">
+                    <div class="row g-0">
+                        <div class="col-md-4" style="margin: 5px;">
+                            <img src="${user.avatar}" class="img-fluid rounded-start" alt="Avtar de ${user.name}">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">${user.name}</h5>
+                                <p class="card-text">
+                                    Saldo: <span class="current_cash">${formatPrice(user.balance)}</span> <br />
+                                    Score: ${user.score}
+                                    ${user.history.length > 0 ? `<br /> Lucro gerado: ${formatPrice(user.history.reduce((a, b) => a + b) - (user.history.length * 300))}` : ''}
+                                    ${user.history.length > 0 ? `<br /> Gerado à ${user.history.length} gerações` : '<br />Criado nesta geração'}
+                                    ${user.trophies ? `<br /> Troféus: ${user.trophies}` : ''}
+                                </p>
+                                <div class="col-auto">
+                                    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
+                                    <div class="input-group">
+                                    <div class="input-group-text">🎰</div>
+                                    <input type="text" class="form-control bet_user " placeholder="Aposta" readonly>
+                                    </div>
                                 </div>
                             </div>
                         </div>
